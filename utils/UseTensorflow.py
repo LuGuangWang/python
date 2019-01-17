@@ -28,11 +28,17 @@ t7=tf.nn.embedding_lookup(t1,[[[1],[2]]],name='embedding')
 #复制
 t8 = tf.tile(t1,[2,1])
 
+#扩展维度
+t13= tf.expand_dims(t1,1)
+
 #变量
 c=tf.Variable(2,name="c")
 d=tf.Variable(3,name='d')
 d=tf.assign(d,10)
 t10 = tf.add(c,d,name='add')
+
+#mask
+t12=tf.sequence_mask(t1,5)
 
 with tf.Session() as sess:
     #tf.summary.FileWriter("../logs/", sess.graph)
@@ -44,5 +50,6 @@ with tf.Session() as sess:
     print('=====t7:\n', sess.run(t7))
     print('=====t8:\n', sess.run(t8))
     print('=====t11:\n', sess.run(t11))
-
+    print('=====t12:\n', sess.run(t12))
+    print('=====t13:\n', sess.run(t13))
     print('=====tmp3:\n',sess.run(tmp3))
