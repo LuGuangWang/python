@@ -2,28 +2,27 @@ import urllib.request as request
 import time
 import os
 import socket
-from shutil import copyfile
 
 #下载测试图片
 def saveItems(path,fileP):
     socket.setdefaulttimeout(60)
     if not path:
-        path = '/bigdata/style/test_photo/'
+        path = '../test_data/'
     if not fileP:
-        fileP = '/bigdata/style/style-recog-samples/test.txt'
+        print('please input the URLS file path.....')
+        return
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
     print(path,fileP)
     with open(fileP) as lines:
         for line in lines:
-            arr = line.strip().replace('\n','').split(',')
-            name = arr[0]
-            fileName= path + '/' + name + '.jpg'
-            url = arr[1]
+            url = line.strip().replace('\n','')
+            start = url.rindex('/') + 1
+            fileName= path + url[start:]
             exists = os.path.exists(fileName)
-            print(fileName,exists)
+            print('fileName:'+fileName,' success:'+ str(not exists))
             retry = 1
-            while retry<5:
+            while retry<3:
                 try:
                     if not exists:
                         request.urlretrieve(url,fileName)
