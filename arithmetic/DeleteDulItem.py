@@ -22,7 +22,7 @@ def delDulp(list):
     while tmp is not None:
         flag = False
         next = tmp.next
-
+        #要考虑2->2->3->3 , 1->6->6的情况
         while (next is not None):
             if (tmp.val == next.val):
                 next = next.next
@@ -48,9 +48,9 @@ def delDulp(list):
 
 #1->1->2->3->3->4->4->5->6->6
 list = Node(1)
-list.next=Node(1)
+list.next=Node(2)
 list.next.next=Node(2)
-list.next.next.next=Node(3)
+list.next.next.next=Node(2)
 list.next.next.next.next=Node(3)
 list.next.next.next.next.next=Node(4)
 list.next.next.next.next.next.next=Node(4)
