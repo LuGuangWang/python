@@ -7,16 +7,12 @@
 
 def sum(n):
     s = 0
-    if n == 0:
-        s = 0
-    elif n == 1:
-        s = n
-    elif n == 2:
+    if n == 0 or n==1 or n==2:
         s = n
     else:
         s = sum(n-1) + sum(n-2)
 
     return s
 
-sum1 = sum(4)
+sum1 = sum(10)
 print(sum1)
