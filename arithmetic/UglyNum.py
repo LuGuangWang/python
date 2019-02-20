@@ -20,8 +20,7 @@ def findUglyNum(index):
 
         if M5 <= next:
             m5 += 1
-        if i==1498:
-            i
+
         i += 1
     return res.pop()
 
