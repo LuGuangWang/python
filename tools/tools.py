@@ -41,3 +41,10 @@ def filterWordRule(oriWord):
         ##忽略异常
         flag = False
     return flag
+
+## host is ip
+def isIp(host):
+    flag=True
+    if len(host)==0 or re.match('^\d+.\d+.\d+.\d+$',host) or 'localhost' == host.lower():
+        flag = False
+    return flag
