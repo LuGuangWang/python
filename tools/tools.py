@@ -48,3 +48,18 @@ def isIp(host):
     if len(host)==0 or re.match('^\d+.\d+.\d+.\d+$',host) or 'localhost' == host.lower():
         flag = False
     return flag
+
+## 毫秒连续天数
+def calc_keep_day(days):
+    days.sort()
+    max_keep=0
+    tmp_keep=0
+    for inx in range(1,len(days)):
+        diff = days[inx] - days[inx-1]
+        if diff<86400000:
+            tmp_keep += 1
+        else:
+            max_keep = max(tmp_keep,max_keep)
+            tmp_keep = 0
+    max_keep = max(tmp_keep,max_keep)+1
+    return max_keep
