@@ -1,5 +1,7 @@
 # coding=utf-8
 
+# 找一个词的相似词。需要有相同字。不包含语义
+
 import re
 import math
 
